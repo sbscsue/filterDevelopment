@@ -1,14 +1,23 @@
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("start");
 }
 
 void loop() {
   float t = millis() / 1000.0;
-  float original = sin(2*PI*2*t) + cos(2*PI*50*t) + sin(2*PI*200*t);
 
+  float signal1 = sin(2*PI*2*t);
+  float signal2 = sin(2*PI*50*t);
+  
+  float original = signal1 + signal2;
   float filterd = filt(original);
 
+  delay(1);
+
+  Serial.print(signal1);
+  Serial.print(" ");
+  Serial.print(signal2);
+  Serial.print(" ");
   Serial.print(original);
   Serial.print(" ");
   Serial.print(filterd);
